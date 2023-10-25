@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(name: "Turtle", price: 11, image_url: "turtle.png", description: "its slow...")
+    @product = Product.new(name: params["name"], price: params["price"], image_url: params["image_url"], description: params["description"])
     @product.save
     render :show
   end
