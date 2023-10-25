@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get "/products/:id.json", controller: "products", action: "show"
   post "/products.json", controller: "products", action: "create"
   patch "/products/:id.json", controller: "products", action: "update"
+  delete "products/:id.json", controller: "products", action: "destroy"
 end
