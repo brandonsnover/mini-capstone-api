@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(name: params["name"], price: params["price"], image_url: params["image_url"], description: params["description"], supplier_id: params["supplier_id"])
+    @product = Product.new(name: params["name"], price: params["price"], description: params["description"], supplier_id: params["supplier_id"])
     @product.save
     if @product.valid?
       render :show
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params["id"])
-    @product.update(name: params["name"] || @product.name, price: params["price"] || @product.price, image_url: params["image_url"] || @product.image_url, description: params["description"] || @product.description, supplier_id: params["supplier_id"] || @product.supplier_id)
+    @product.update(name: params["name"] || @product.name, price: params["price"] || @product.price, description: params["description"] || @product.description, supplier_id: params["supplier_id"] || @product.supplier_id)
     if @product.valid?
       render :show
     else
