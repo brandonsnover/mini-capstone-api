@@ -6,3 +6,7 @@
 
 # product = Product.new(name: "Paint", price: 8, image_url: "imageurl", description: "its red")
 # product.save
+
+Supplier.create(name: "Gomart", email: "gmart@email.com", phone_number: "555-1234")
+
+Supplier.create(name: "Smartmart", email: "smart@email.com", phone_number: "555-4321")
