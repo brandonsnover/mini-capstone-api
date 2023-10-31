@@ -11,6 +11,17 @@ class SuppliersController < ApplicationController
 
   def create
     @supplier = Supplier.new(name: params["name"], email: params["email"], phone_number: params["phone_number"])
-    @product.save
+    @supplier.save
+  end
+
+  def update
+    @supplier = Supplier.find_by(id: params["id"])
+    @supplier.update(name: params["name"] || @supplier.name, email: params["email"] || @supplier.email, phone_number: params["phone_number"] || @supplier.phone_number)
+  end
+
+  def destroy
+    @supplier = Supplier.find_by(id: params["id"])
+    @supplier.destroy
+    render json: { message: "supplier destroyed" }
   end
 end
