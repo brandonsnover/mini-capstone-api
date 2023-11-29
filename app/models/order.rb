@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   belongs_to :user
-  belongs_to :product
+  has_many :carted_products
 
   def subtotal
     @product = Product.find_by(id: product_id)
