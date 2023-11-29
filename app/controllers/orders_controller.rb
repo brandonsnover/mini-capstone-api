@@ -1,8 +1,9 @@
 class OrdersController < ApplicationController
   def create
-    @order = Order.create(user_id: current_user.id, product_id: params["product_id"], quantity: params["quantity"])
+    @order = Order.new(user_id: current_user.id)
     @order.update(subtotal: @order.subtotal, tax: @order.tax, total: @order.total)
     if @order.save
+      # @carted_products.update_all(status: "purchased", order_id: @order.id)
       render :show
     else
       render json: { errors: @order.errors.full_messages }, status: 400

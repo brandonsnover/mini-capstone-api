@@ -3,8 +3,12 @@ class Order < ApplicationRecord
   has_many :carted_products
 
   def subtotal
-    @product = Product.find_by(id: product_id)
-    subtotal = @product[:price] * quantity
+    @carted_products = carted_products.where(status: "carted")
+
+    subtotal = 0
+    @carted_products.each do |carted_product|
+      subtotal += carted_product.product.price * carted_product.quantity
+    end
     return subtotal
   end
 
