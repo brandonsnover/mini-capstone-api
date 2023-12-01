@@ -2,7 +2,7 @@ class CartedProductsController < ApplicationController
   before_action :authenticate_user
 
   def create
-    @carted_product = CartedProduct.create(user_id: current_user.id, product_id: params[:product_id], status: "carted", quantity: params[:quantity], order_id: nil)
+    @carted_product = CartedProduct.create(user_id: current_user.id, product_id: params[:product_id], status: "carted", quantity: 1, order_id: nil)
     if @carted_product.valid?
       render json: { message: "carted_product created" }
     else
@@ -17,5 +17,11 @@ class CartedProductsController < ApplicationController
     else
       render json: { message: "You have no products in your cart" }
     end
+  end
+
+  def destroy
+    carted_product = current_user.carted_products.find_by(id: params[:id], status: "carted")
+    carted_product.update(status: "removed")
+    render json: { message: "Item removed from cart!" }
   end
 end
