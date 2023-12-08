@@ -1,20 +1,150 @@
-# product = Product.new(name: "Ball", price: 5, image_url: "imageurl", description: "its round")
-# product.save
-
-# product = Product.new(name: "Hammer", price: 2, image_url: "imageurl", description: "its heavy")
-# product.save
-
-# product = Product.new(name: "Paint", price: 8, image_url: "imageurl", description: "its red")
-# product.save
-
-# Supplier.create(name: "Gomart", email: "gmart@email.com", phone_number: "555-1234")
-
-# Supplier.create(name: "Smartmart", email: "smart@email.com", phone_number: "555-4321")
-
-Image.create(url: "example_url", product_id: 2)
-
-Image.create(url: "example_url4", product_id: 5)
-
-Image.create(url: "example_url5", product_id: 3)
-
-Image.create(url: "example_url2", product_id: 2)
+User.create!([
+  { name: "Dave Jones", email: "djones@email.com", password: "1234", admin: false },
+  { name: "Jane Doe", email: "jdoe@email.com", password: "1234", admin: false },
+  { name: "John Smith", email: "jsmith@email.com", password: "1234", admin: true },
+])
+Supplier.create!([
+  { name: "Gomart", email: "gmart@email.com", phone_number: "555-1234" },
+  { name: "Stopmart", email: "smart@email.com", phone_number: "444-5555" },
+  { name: "Smartmart", email: "smart@email.com", phone_number: "444-5500" },
+])
+Product.create!([
+  { name: "Snail", price: "11.0", description: "its slow...", stock: nil, supplier_id: 2 },
+  { name: "Oak tree", price: "30.0", description: "its really tall", stock: nil, supplier_id: 2 },
+  { name: "Paint", price: "8.0", description: "its red", stock: nil, supplier_id: 1 },
+  { name: "Turtle", price: "11.0", description: "its slow...", stock: nil, supplier_id: 1 },
+  { name: "Ladder", price: "25.0", description: "its tall", stock: nil, supplier_id: 1 },
+  { name: "Hammer", price: "5.0", description: "its heavy", stock: nil, supplier_id: 1 },
+  { name: "frying pan", price: "9.0", description: "used to cook", stock: nil, supplier_id: 1 },
+  { name: "asdasd", price: "7.0", description: "a", stock: nil, supplier_id: 2 },
+  { name: "new product", price: "6.0", description: "asd", stock: nil, supplier_id: 1 },
+  { name: "Broom", price: "12.0", description: "it sweeps", stock: nil, supplier_id: 2 },
+])
+Order.create!([
+  { user_id: 1, subtotal: "10.0", tax: "1.0", total: "11.0" },
+  { user_id: 2, subtotal: "10.0", tax: "1.0", total: "11.0" },
+  { user_id: 2, subtotal: "16.0", tax: "1.44", total: "17.44" },
+  { user_id: 1, subtotal: "55.0", tax: "4.95", total: "59.95" },
+  { user_id: 3, subtotal: "48.0", tax: "4.32", total: "52.32" },
+  { user_id: 3, subtotal: "60.0", tax: "5.4", total: "65.4" },
+  { user_id: 1, subtotal: "0.0", tax: "0.0", total: "0.0" },
+  { user_id: 1, subtotal: "0.0", tax: "0.0", total: "0.0" },
+  { user_id: 1, subtotal: "0.0", tax: "0.0", total: "0.0" },
+  { user_id: 1, subtotal: "16.0", tax: "1.44", total: "17.44" },
+  { user_id: 2, subtotal: "415.0", tax: "37.35", total: "452.35" },
+])
+Image.create!([
+  { url: "https://m.media-amazon.com/images/I/611u6j2ONUL._AC_UF894,1000_QL80_.jpg", product_id: 2 },
+  { url: "https://m.media-amazon.com/images/I/71tTWyypTKL.jpg", product_id: 2 },
+  { url: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTR57s13g32NkslSF-F30he2QllDZzUVRc9nS71bQFhuPWzHKptzl9GHJkm-bblIH-KyMR5u6ney-odl9F30WOu8FXdNJxlxEJCkV5v-DaXlDAU3-JVBTQf", product_id: 6 },
+  { url: "https://img.uline.com/is/image/uline/H-1195_US?$Mobile_Zoom$", product_id: 7 },
+  { url: "https://m.media-amazon.com/images/I/71l4pWDxfTL._AC_UF894,1000_QL80_.jpg", product_id: 7 },
+  { url: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQNVBmoyvKFllX3F1rAN0TUiKPt6J_5wlVN-cCQ-a-SC-BrTqpz", product_id: 5 },
+  { url: "https://media.istockphoto.com/id/156971909/photo/can-with-red-paint-and-paintbrush.jpg?s=612x612&w=0&k=20&c=phjbOVcWlU_XOJqD2tqUEpbeJ8SzmxqrrCBUrk-Bt9g=", product_id: 3 },
+  { url: "https://customcorntoss.com/wp-content/uploads/2013/09/red-paint-can.jpg", product_id: 3 },
+  { url: "https://www.wholesalenurseryco.com/cdn/shop/products/35077__14752.1663778093.1280.1280_62d6aa74-8809-47c2-976e-15b5e8015aa7.jpg?v=1687442910", product_id: 8 },
+  { url: "https://i.natgeofe.com/n/671ea18d-3185-42a9-8e64-a8470befbe11/01-turtle-day-photo-ark_2x1.jpg", product_id: 4 },
+  { url: "https://m.media-amazon.com/images/I/61SyueL-jkL.jpg", product_id: 9 },
+])
+Category.create!([
+  { name: "Tools" },
+  { name: "Animals" },
+  { name: "Cooking" },
+])
+CategoryProduct.create!([
+  { product_id: 4, category_id: 2 },
+  { product_id: 5, category_id: 2 },
+  { product_id: 2, category_id: 1 },
+  { product_id: 7, category_id: 1 },
+  { product_id: 9, category_id: 3 },
+])
+CartedProduct.create!([
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 3, status: "purchased", order_id: 15, quantity: 2 },
+  { user_id: 2, product_id: 3, status: "purchased", order_id: 16, quantity: 2 },
+  { user_id: 2, product_id: 3, status: "purchased", order_id: 16, quantity: 2 },
+  { user_id: 2, product_id: 3, status: "purchased", order_id: 16, quantity: 2 },
+  { user_id: 2, product_id: 4, status: "purchased", order_id: 16, quantity: 5 },
+  { user_id: 2, product_id: 6, status: "purchased", order_id: 16, quantity: 1 },
+  { user_id: 2, product_id: 8, status: "purchased", order_id: 16, quantity: 10 },
+  { user_id: 1, product_id: 7, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 3, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 7, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 4, status: "carted", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 3, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 3, status: "carted", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "carted", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "carted", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 5, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+  { user_id: 1, product_id: 8, status: "removed", order_id: nil, quantity: 1 },
+])
